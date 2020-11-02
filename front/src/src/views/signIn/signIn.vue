@@ -1,5 +1,11 @@
+<script>
+
+  export default {
+    name: 'signIn'
+  }
+</script>
 <template>
-  <div class="signIn">
+  <div>
     <h1>sign in</h1>
     <div id="register">
       <input type='text' id='name' placeholder='name'>
@@ -11,9 +17,4 @@
   </div> 
 </template>
 
-<script>
 
-export default {
-  name: 'signIn'
-}
-</script>
