@@ -6,9 +6,6 @@ var userApi = require(join(dirname(__filename)+'/user/user.js'));
 console.log(userApi)
 // respond with "hello world" when a GET request is made to the homepage
 userApi.start(app);
-app.get('/', function(req, res) {
-  res.send('hello world');
-});
 app.listen(process.env.port,()=>{
     console.log(`start server in port: ${process.env.port}`)
 })
