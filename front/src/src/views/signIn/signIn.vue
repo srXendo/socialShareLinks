@@ -1,5 +1,5 @@
 <script>
-import axios from 'axios'
+import addUser from '../../services/user.service.js'
 export default {
   name: 'signIn',
   data: () => {
@@ -16,7 +16,7 @@ export default {
   methods: {
     sendRegister: function () {
       this.haveErrors()
-      axios.post('user/add', this.form)
+      addUser(this.form)
     },
     haveErrors () {
     }
