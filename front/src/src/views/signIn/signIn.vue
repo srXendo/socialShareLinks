@@ -3,7 +3,7 @@ export default {
   name: 'signIn',
   methods: {
     sendRegister: function () {
-      console.log('ad')
+      console.log(this.name)
     }
   }
 }
@@ -12,10 +12,10 @@ export default {
   <div>
     <h1>sign in</h1>
     <div id="register">
-      <input type='text' id='name' placeholder='name'>
-      <input type='email' id='email' placeholder='email'>
-      <input type='password' id='password' placeholder='password'>
-      <input type='password' id='confirmPassword' placeholder='confirm password'>
+      <input type='text' id='name' placeholder='name' v-model="name">
+      <input type='email' id='email' placeholder='email' v-model="email">
+      <input type='password' id='password' placeholder='password' v-model="password">
+      <input type='password' id='confirmPassword' placeholder='confirm password' v-model="confirmPassword">
       <button type="button" id="sendRegister" @click="sendRegister">Register</button>
     </div>
   </div>
