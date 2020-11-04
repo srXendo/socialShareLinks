@@ -1,3 +1,21 @@
-module.exports.setHeaders = (req,res,next)=>{
-    res.setHeaders('Access-Control-Allow-Origin',`${process.env.front_prot}://${process.env.front_domain}:${process.ebv,front_port}`)
+module.exports.cors = (req,res,next)=>{
+    try{
+        
+    res.header('Access-Control-Allow-Headers', 'Content-Type')
+
+    res.header('Access-Control-Allow-Origin',`${process.env.front_prot}://${process.env.front_domain}:${process.env.front_port}`)
+    res.header('Access-Control-Request-Method', req.method)
+    res.header('Content-Type','application/json;charset=UTF-8')
+    next()
+    }catch(err){
+        console.error
+    }
+}
+module.exports.bodyParser = async(req,res,next)=>{
+    var data = "";
+    req.on('data', chunk => { data += chunk })
+    req.on('end', () => {
+        req.rawBody = data;
+        next();
+    })
 }
