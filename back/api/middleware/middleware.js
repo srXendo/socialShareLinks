@@ -23,12 +23,14 @@ module.exports.bodyParser = async(req,res,next)=>{
 }
 module.exports.apiResponse = (req,res,next) => {
     req.responseController
-        .then(doc =>{ 
+        .then(doc =>{   
+            console.log(doc)
             res.status(doc.code).send(doc.data)})
         .catch(err => {
+            //console.log(doc)
             console.log(err)
-            console.error(new Error(err.data))
-            res.status(err.code).send('no ok')
+            console.error(new Error(err.data.stack))
+            res.status(500).send('no ok')
             return err
         });
 }

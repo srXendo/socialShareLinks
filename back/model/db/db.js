@@ -16,4 +16,12 @@ module.exports = class db{
             })
         })
     }
+    select(con, selector, condition){
+        return new Promise((resolve,reject)=>{
+            con.query(`SELECT ${selector} FROM ${process.env.db_name}.${this.#table} WHERE ${condition}`,(err,result, fields)=>{
+                if(err) reject(err);
+                resolve(result);
+            })
+        })
+    }
 }
