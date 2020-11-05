@@ -4,9 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node install/install.js",
+    "uninstall": "node install/uninstall.js",
+    "onServer": "node app.js"
   },
-  "author": "",
+  "author": "David Martin Melgar",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^8.2.0",
