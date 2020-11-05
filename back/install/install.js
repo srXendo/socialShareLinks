@@ -24,17 +24,12 @@ getConnector().then(doc=>{
                 (err,result,fields)=>{
                     if (err) console.error(new Error(err));
                 })
-                
-                con.query(`create table ${process.env.db_name}.UsersWrappers(id_user varchar(255), id_wrapper varchar(255), FOREIGN KEY (id_user) REFERENCES Users(id),FOREIGN KEY (id_wrapper) REFERENCES Wrappers(id))`,
-                (err,result,fields)=>{
-                    if (err) console.error(new Error(err));
-                })
             })
         })
         con.query(`create table ${process.env.db_name}.roles(id varchar(255), name varchar(255), primary key(id))`,
         (err,result,fields)=>{
             if (err) console.error(new Error(err));
-            con.query(`create table ${process.env.db_name}.rolesWrappers(id_role varchar(255), id_wrapper varchar(255), FOREIGN KEY (id_role) REFERENCES roles(id) ,FOREIGN KEY (id_wrapper) REFERENCES Wrappers(id))`,
+            con.query(`create table ${process.env.db_name}.usersWrappersRoles(id_user varchar(255), id_wrapper varchar(255), id_role varchar(255),FOREIGN KEY (id_user) REFERENCES users(id), FOREIGN KEY (id_role) REFERENCES roles(id) ,FOREIGN KEY (id_wrapper) REFERENCES Wrappers(id))`,
             (err,result,fields)=>{
                 if (err) console.error(new Error(err));
             })
