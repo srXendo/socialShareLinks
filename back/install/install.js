@@ -17,10 +17,10 @@ getConnector().then(doc=>{
         con.query(`create table ${process.env.db_name}.Wrappers(id varchar(255), name varchar(255), type varchar(255), primary key(id))`,
         (err,result,fields)=>{
             if (err) console.error(new Error(err));
-            con.query(`create table ${process.env.db_name}.Contents(id varchar(255), content TEXT, primary key(id))`,
+            con.query(`create table ${process.env.db_name}.Containers(id varchar(255), content TEXT, primary key(id))`,
             (err,result,fields)=>{
                 if (err) console.error(new Error(err));
-                con.query(`create table ${process.env.db_name}.WrappersContents(id_wrapper varchar(255), id_content varchar(255), FOREIGN KEY (id_wrapper) REFERENCES Wrappers(id) ,FOREIGN KEY (id_content) REFERENCES Contents(id))`,
+                con.query(`create table ${process.env.db_name}.WrappersContainers(id_wrapper varchar(255), id_container varchar(255), FOREIGN KEY (id_wrapper) REFERENCES Wrappers(id) ,FOREIGN KEY (id_container) REFERENCES Containers(id))`,
                 (err,result,fields)=>{
                     if (err) console.error(new Error(err));
                 })
