@@ -23,6 +23,7 @@ getConnector().then(doc=>{
                 con.query(`create table ${process.env.db_name}.WrappersContainers(id_wrapper varchar(255), id_container varchar(255), FOREIGN KEY (id_wrapper) REFERENCES Wrappers(id) ,FOREIGN KEY (id_container) REFERENCES Containers(id))`,
                 (err,result,fields)=>{
                     if (err) console.error(new Error(err));
+                    console.log('end')
                 })
             })
         })
@@ -32,6 +33,7 @@ getConnector().then(doc=>{
             con.query(`create table ${process.env.db_name}.usersWrappersRoles(id_user varchar(255), id_wrapper varchar(255), id_role varchar(255),FOREIGN KEY (id_user) REFERENCES users(id), FOREIGN KEY (id_role) REFERENCES roles(id) ,FOREIGN KEY (id_wrapper) REFERENCES Wrappers(id))`,
             (err,result,fields)=>{
                 if (err) console.error(new Error(err));
+                console.log('end')
             })
         })
     })

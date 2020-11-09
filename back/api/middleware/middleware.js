@@ -27,10 +27,12 @@ module.exports.apiResponse = (req,res,next) => {
             console.log(doc)
             res.status(doc.code).send(doc.data)})
         .catch(err => {
-            //console.log(doc)
             console.log(err)
             console.error(new Error(err.data.stack))
             res.status(500).send('no ok')
             return err
         });
+}
+module.exports.setSession = (req, res, next) => {
+    
 }

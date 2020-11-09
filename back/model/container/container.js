@@ -1,14 +1,13 @@
 const db = require('../db/db.js');
-module.exports = class container{
+module.exports = class container extends db{
     #model = {
         id: '',
         content: [] | ''
     };
-    #db;
+    
     constructor(){
-       this.#db= new db('Containers', [...Object.keys(this.#model)]);
+        super('Containers');
+        this.setColumns( [...Object.keys(this.#model)])
     }
-    insert(con, id, content){
-        return this.#db.insert(con,[ id, content ]);
-    }
+
 }

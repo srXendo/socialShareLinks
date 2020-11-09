@@ -1,17 +1,14 @@
 const db = require('../db/db.js');
 const { v4 } = require('uuid');
 
-module.exports = class wrapperContainer{
+module.exports = class wrapperContainer extends db{
     #model={
         id_wrapper:'',
         id_container: '',
         
     };
-    #db;
     constructor(){
-        this.#db = new db('WrappersContainers', [...Object.keys(this.#model)]);
-    }
-    insert(con, id_wrapper, id_container){
-        return this.#db.insert(con, [id_wrapper, id_container]);
+        super('WrappersContainers');
+        this.setColumns( [...Object.keys(this.#model)])
     }
 }

@@ -1,15 +1,13 @@
 const db = require('../db/db.js');
 const { v4 } = require('uuid');
-module.exports = class wrapper{
+module.exports = class wrapper extends db{
     #model={
         id: '',
         name: ''
     };
     #db;
     constructor(){
-        this.#db = new db('Roles', [...Object.keys(this.#model)]);
-    }
-    insert(con, id, name){
-        return this.#db.insert(con,[ id, name ]);
+        super('Roles');
+        this.setColumns( [...Object.keys(this.#model)])
     }
 }
