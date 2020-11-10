@@ -34,5 +34,6 @@ module.exports.apiResponse = (req,res,next) => {
         });
 }
 module.exports.setSession = (req, res, next) => {
-    
+    res.cookie(`${process.env.back_cookie_name}`, 123465, { maxAge: process.env.back_cookie_maxAge, httpOnly: true, origin: process.env.back_domain, secure: process.env.back_cookie_secure });
+    res.status(200).send('{"ok":"ok"}');
 }

@@ -16,11 +16,7 @@ export default {
   },
   methods: {
     sendRegister: function () {
-      console.log()
-      this.haveErrors()
       addUser(this.form)
-    },
-    haveErrors () {
     }
   }
 }
