@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import signUp from '../views/signUp/signUp.vue'
 import signIn from '../views/signIn/signIn.vue'
+import dashboard from '../views/dashboard/dashboard.vue'
 import e404 from '../views/errorsHandler/errorsHandler.vue'
 Vue.use(VueRouter)
 
@@ -16,6 +17,11 @@ const routes = [
     path: '/signIn',
     name: 'signIn',
     component: signIn
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    component: dashboard
   },
   {
     path: '*',

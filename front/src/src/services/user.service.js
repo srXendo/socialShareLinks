@@ -15,5 +15,12 @@ export default {
         'Content-Type': 'application/json'
       }
     })
+  },
+  getList: function getListHome () {
+    return axios.get(`${url}/user/getList`, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
   }
 }
