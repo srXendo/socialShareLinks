@@ -9,4 +9,10 @@ module.exports.start = async(app)=>{
         req.responseController = uController.authUser(req.rawBody)
         next()
     }, setSession)
+    app.get('/user/getList', (req, res, next)=>{
+        res.send(JSON.stringify([
+            {playerName: 'alberto', photoProfile: '?', position: 'ala', height: 1.80, years: 26, weight: 80, nation: 'spain'},
+            {playerName: 'david', photoProfile: '?', position: 'ala', height: 1.80, years: 26, weight: 80, nation: 'franch'}
+        ])).status(200)
+    })
 }
