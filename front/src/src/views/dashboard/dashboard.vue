@@ -8,13 +8,18 @@ console.log(getList())
 
 <template>
     <div>
-        <div>
+        <div id="playerlist">
             <img src="" alt="">
-            <p>Edad</p>
-            <p>Peso</p>
-            <p>Altura</p>
-            <p>Posicion</p>
-            <p>Categoria</p>
+            <p>Edad:</p>
+            <input type="text" placeholder="...">
+            <p>Peso:</p>
+            <input type="text" placeholder="...">
+            <p>Altura:</p>
+            <input type="text" placeholder="...">
+            <p>Posicion:</p>
+            <input type="text" placeholder="...">
+            <p>Categoria:</p>
+            <input type="text" placeholder="...">
         </div>
     </div>
 </template>
