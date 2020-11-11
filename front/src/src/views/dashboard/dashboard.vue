@@ -2,11 +2,9 @@
 import userService from '../../services/user.service.js'
 export default {
   name: 'dasboard',
-  data: () => {
-    userService.getList().then(doc => {
-      console.log(doc.data)
-    })
-    return { }
+  data: async () => {
+    const doc = await userService.getList()
+    return { playersList: doc.data }
   }
 }
 
