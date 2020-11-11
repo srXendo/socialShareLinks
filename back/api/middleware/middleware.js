@@ -1,5 +1,5 @@
 const { response } = require("express")
-
+const crypto = require('../../libs/crypto.js');
 module.exports.cors = (req,res,next)=>{
     try{
         
@@ -34,6 +34,13 @@ module.exports.apiResponse = (req,res,next) => {
         });
 }
 module.exports.setSession = (req, res, next) => {
-    res.cookie(`${process.env.back_cookie_name}`, 123465, { maxAge: process.env.back_cookie_maxAge, httpOnly: true, origin: process.env.back_domain, secure: process.env.back_cookie_secure });
+    try{
+        console.log()
+    }catch(err){
+        console.error(err.stack)
+    }
+    let save = crypto.encoding("123465","asdfghf");
+    let decrypt = crypto.decoding(save,"asdfghf")
+    res.cookie(`${process.env.back_cookie_name}`,decrypt , { maxAge: process.env.back_cookie_maxAge, httpOnly: true, origin: process.env.back_domain, secure: process.env.back_cookie_secure });
     res.status(200).send('{"ok":"ok"}');
 }
