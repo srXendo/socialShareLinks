@@ -11,6 +11,7 @@ export default {
   },
   loginRequest: function loginRequest (data) {
     return axios.post(`${url}/user/signup`, data, {
+      withCredentials: true,
       headers: {
         'Content-Type': 'application/json'
       }
@@ -18,6 +19,7 @@ export default {
   },
   getList: function getListHome () {
     return axios.get(`${url}/user/getList`, {
+      withCredentials: true,
       headers: {
         'Content-Type': 'application/json'
       }

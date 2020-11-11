@@ -2,9 +2,9 @@ const { response } = require("express")
 const crypto = require('../../libs/crypto.js');
 module.exports.cors = (req,res,next)=>{
     try{
-        
-    res.header('Access-Control-Allow-Headers', 'Content-Type')
-
+ 
+    res.header('Access-Control-Allow-Headers', 'Authorization, X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept')
+    res.header('Access-Control-Allow-Credentials',true);
     res.header('Access-Control-Allow-Origin',`${process.env.front_prot}://${process.env.front_domain}:${process.env.front_port}`)
     res.header('Access-Control-Request-Method', req.method)
     res.header('Content-Type','application/json;charset=UTF-8')
@@ -39,8 +39,7 @@ module.exports.setSession = (req, res, next) => {
     }catch(err){
         console.error(err.stack)
     }
-    let save = crypto.encoding("123465","asdfghf");
-    let decrypt = crypto.decoding(save,"asdfghf")
-    res.cookie(`${process.env.back_cookie_name}`,decrypt , { maxAge: process.env.back_cookie_maxAge, httpOnly: true, origin: process.env.back_domain, secure: process.env.back_cookie_secure });
+
+    res.cookie(`${process.env.back_cookie_name}`,crypto.encoding("123465","asdfghf") , { maxAge: process.env.back_cookie_maxAge, httpOnly: true, origin: process.env.back_domain});
     res.status(200).send('{"ok":"ok"}');
 }

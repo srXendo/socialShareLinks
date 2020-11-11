@@ -1,9 +1,15 @@
 <script>
-import getList from '../../services/user.service.js'
+import userService from '../../services/user.service.js'
 export default {
-  name: 'dasboard'
+  name: 'dasboard',
+  data: () => {
+    userService.getList().then(doc => {
+      console.log(doc.data)
+    })
+    return { }
+  }
 }
-console.log(getList())
+
 </script>
 
 <template>
