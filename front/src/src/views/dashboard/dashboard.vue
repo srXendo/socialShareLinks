@@ -16,18 +16,13 @@ export default {
 <template>
     <div  v-if="playersList !== null">
         <div id="playerlist" v-for="player in playersList" v-bind:key="player">
-            <span> {{player}} </span>
+            <p>Nombre:{{player.playerName}}</p>
             <img src="" alt="">
-            <p>Edad:</p>
-            <input type="text" placeholder="...">
-            <p>Peso:</p>
-            <input type="text" placeholder="...">
-            <p>Altura:</p>
-            <input type="text" placeholder="...">
-            <p>Posicion:</p>
-            <input type="text" placeholder="...">
-            <p>Categoria:</p>
-            <input type="text" placeholder="...">
+            <p>Edad:{{player.years}}</p>
+            <p>Peso:{{player.weight}}</p>
+            <p>Altura:{{player.height}}</p>
+            <p>Posicion:{{player.position}}</p>
+            <p>Categoria:{{player.category}}</p>
         </div>
     </div>
 </template>
