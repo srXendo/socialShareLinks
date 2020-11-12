@@ -2,17 +2,21 @@
 import userService from '../../services/user.service.js'
 export default {
   name: 'dasboard',
-  data: async () => {
+  data: function () {
+    return { playersList: null }
+  },
+  mounted: async function () {
     const doc = await userService.getList()
-    return { playersList: doc.data }
+    this.playersList = doc.data
   }
 }
 
 </script>
 
 <template>
-    <div>
-        <div id="playerlist">
+    <div  v-if="playersList !== null">
+        <div id="playerlist" v-for="player in playersList" v-bind:key="player">
+            <span> {{player}} </span>
             <img src="" alt="">
             <p>Edad:</p>
             <input type="text" placeholder="...">
