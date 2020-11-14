@@ -1,9 +1,8 @@
-
-class userController{
+class playerController{
     #regExSqli = /[\t\r\n]|(--[^\r\n]*)|(\/\*[\w\W]*?(?=\*)\*\/)/gi; 
     #regExEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-    #userService = require("../../service/user/user");
-    async addUser(formSignIn){
+    #userService = require("../../service/player/player");
+    async addplayer(formSignIn){
         let form = JSON.parse(formSignIn);
         let err = [];
 
@@ -47,30 +46,26 @@ class userController{
         }  
     }
     async authUser(formLogIn){
-        console.log(2)
+
         let form = JSON.parse(formLogIn);
        
         let err = [];
         const response = !this.#regExEmail.test(form.email)
-        console.log(response);
         if(response){
             err.push(new Error('email not valid'),form.email)
         }
-            
-        console.log(err)    
+              
         if(err.length > 0)
             return Promise.reject({
                 sucess: false,
                 data: err,
                 code:  500
             })   
-            console.log(4)    
         return this.#userService.getDataUser(form.email,form.password).then(doc=>{
-            console.log('yeahhhhh!', doc)
             return { data: doc, code: 200, sucess: true };
         }).catch(err=>{
             return { ...err, code: 500, sucess: false }
         })
     }
 }
-module.exports = new userController();
+module.exports = new playerController();
