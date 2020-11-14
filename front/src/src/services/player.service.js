@@ -17,7 +17,7 @@ export default {
       }
     })
   },
-  getList: function getListHome () {
+  getList: function getListPlayersHome () {
     return axios.get(`${url}/user/getList`, {
       withCredentials: true,
       headers: {

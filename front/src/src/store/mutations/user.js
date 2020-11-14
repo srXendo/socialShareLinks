@@ -1,4 +1,4 @@
-import userService from './../../services/user.service'
+import userService from './../../services/player.service'
 async function responseLogin (state, responseApi) {
   const response = await responseApi
   console.log('start login: ', state, response)

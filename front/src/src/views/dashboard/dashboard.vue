@@ -1,12 +1,16 @@
 <script>
-import userService from '../../services/user.service.js'
+import userService from '../../services/player.service.js'
+import environment from '../../environment/environment.js'
 export default {
-  name: 'dasboard',
+  name: 'dashboard',
   data: function () {
     return {
       playersList: null,
       getCategoryForYears: function (years) {
         return years > 30 ? 'alebeines' : 'juvenil'
+      },
+      goToPlayerProfile: function (player) {
+        window.location.href = `${environment.front.prot}://${environment.front.domain}:${environment.front.port}/#/playerProfile/${player.playerName}`
       }
     }
   },
@@ -19,7 +23,7 @@ export default {
 </script>
 <template>
     <div  v-if="playersList !== null" class="orderList">
-        <div id="playerlist" v-for="player in playersList" v-bind:key="player" class="listplayers">
+        <div id="playerlist" v-for="player in playersList" v-bind:key="player" class="listplayers"  @click="goToPlayerProfile(player)">
             <p>Nombre:{{player.playerName}}</p>
             <img v-bind:src="player.photoProfile" alt="" class="photoprofile">
             <div class="orderText">

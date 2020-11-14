@@ -1,5 +1,5 @@
 <script>
-import addUser from '../../services/user.service.js'
+import addUser from '../../services/player.service.js'
 
 export default {
   name: 'signIn',
