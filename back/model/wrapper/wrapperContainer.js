@@ -1,14 +1,30 @@
 const db = require('../db/db.js');
-const { v4 } = require('uuid');
-
-module.exports = class wrapperContainer extends db{
+function getModel(model){
+    const models = require('../models.js')
+    console.log(new models[model]().getTName())
+    return new models[model]();
+}
+class wrapperContainer extends db{
     #model={
-        id_wrapper:'',
-        id_container: '',
-        
+        id_wrapper: 'varchar(255) not null',
+        id_container: 'varchar(255) not null',
     };
+    #fk = [
+        {   
+            columnKey: 'id_wrapper',
+            tableReference:getModel('wrapper').getTName(),
+            idReference: getModel('wrapper').getPk()
+        },
+        {   
+            columnKey: 'id_container',
+            tableReference:getModel('container').getTName(),
+            idReference: getModel('container').getPk()
+        }
+    ]
     constructor(){
-        super('WrappersContainers');
-        this.setColumns( [...Object.keys(this.#model)])
+        super('wrapperscontainers');
+        this.setColumns( this.#model)
+        this.setFk(this.#fk)
     }
 }
+module.exports = wrapperContainer

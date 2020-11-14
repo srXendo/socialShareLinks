@@ -1,13 +1,15 @@
 const db = require('../db/db.js');
-module.exports = class container extends db{
+class container extends db{
     #model = {
-        id: '',
-        content: [] | ''
+        id: 'varchar(255) not null',
+        content: 'varchar(255)'
     };
     
     constructor(){
-        super('Containers');
-        this.setColumns( [...Object.keys(this.#model)])
+        super('containers');
+        this.setColumns(this.#model)
+        this.setPk('id')
     }
 
 }
+module.exports =container;
