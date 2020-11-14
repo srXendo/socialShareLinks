@@ -55,10 +55,10 @@ class playerService{
         let con = doc.data;
         return await new playerModel().select(con, 'count(*)', `email= '${email}'`);
     }
-    async existCif(cif){
+    async existdni(dni){
         let doc = await getConnector();
         let con = doc.data
-        let response = await new playerModel().select(con, 'count(*)', `cif= '${cif}'`);
+        let response = await new playerModel().select(con, 'count(*)', `dni= '${dni}'`);
         console.log(response)
         return response[0];
     }

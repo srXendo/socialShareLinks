@@ -1,5 +1,5 @@
 <script>
-import addUser from '../../services/player.service.js'
+import playerService from '../../services/player.service.js'
 
 export default {
   name: 'signIn',
@@ -32,7 +32,7 @@ export default {
   },
   methods: {
     sendRegister: function () {
-      addUser(this.form)
+      playerService.addPlayer(this.form)
     }
   }
 }
@@ -44,7 +44,7 @@ export default {
       <div style='display:flex; flex-direction:column;'>
         <input type='text' id='name' placeholder='name' v-model="form.name">
         <span v-if="this.form.name ===''" class="errorValidationText">* <br> Nombre de usuario requerido <br><br></span>
-        <input type='text' id='name' placeholder='name' v-model="form.lastNames">
+        <input type='text' id='name' placeholder='lastNames' v-model="form.lastNames">
         <span v-if="this.form.lastNames ===''" class="errorValidationText">* <br> apellidos requerido <br><br></span>
         <input type='email' id='email' placeholder='email' v-model="form.email">
         <span  v-if="this.form.email === ''" class="errorValidationText">Email requerido</span>

@@ -20,35 +20,34 @@ class playerController{
 
         if(form.password !== form.confirmPassword)
             err.push(new Error('confirm password and password is not same'))
-        console.log((!this.#DNI_REGEX.test(form.cif) && !this.#CIF_REGEX.test(form.cif) && !this.#NIE_REGEX.test(form.cif)))
-        if(form.cif === '' || this.#regExSqli.test(form.cif) || (!this.#DNI_REGEX.test(form.cif) && !this.#CIF_REGEX.test(form.cif) && !this.#NIE_REGEX.test(form.cif))){
-            err.push(new Error('cif not valid'))
+            
+        if(form.dni === '' || this.#regExSqli.test(form.dni) || (!this.#DNI_REGEX.test(form.dni) && !this.#CIF_REGEX.test(form.dni) && !this.#NIE_REGEX.test(form.dni))){
+            err.push(new Error('dni not valid'))
         }
-        const isUniqueCif = await this.existCif(form.cif)
-        if(isUniqueCif.sucess && isUniqueCif.data !== 0)
-            err.push(new Error('cif already use'))
+        const isUniquedni = await this.existdni(form.dni)
+        if(isUniquedni.sucess && isUniquedni.data !== 0)
+            err.push(new Error('dni already use'))
 
         const isUniqueEmail = await this.existPlayer(form.email)
         if(isUniqueEmail.sucess && isUniqueEmail.data !== 0)
             err.push(new Error('email alredy use'))
 
         console.log('how email',isUniqueEmail)
-
         if(err.length > 0)
             return Promise.reject({
                 sucess: false,
                 data: err,
                 code:  500
             })   
-        return this.#playerService.createPlayer(form.email, form.name, form.password, form.cif, form.lastNames).then(doc=>{
+        return this.#playerService.createPlayer(form.email, form.name, form.password, form.dni, form.lastNames).then(doc=>{
             return { ...doc, code: 200, sucess: true };
         }).catch(err=>{
             return { ...err, code: 500, sucess: false }
         })
     }
-    async existCif(cif){
+    async existdni(dni){
         try{
-            let response = await this.#playerService.existCif(cif)
+            let response = await this.#playerService.existdni(dni)
 
             let result = {
                 sucess: true,

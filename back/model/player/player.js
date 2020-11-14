@@ -4,7 +4,7 @@ class player extends db{
         id: 'varchar(255) not null',
         name: 'varchar(150) not null',
         lastNames: 'varchar(255) not null',
-        cif: 'varchar(255) not null',
+        dni: 'varchar(255) not null',
         email: 'varchar(255) not null',
         password: 'TEXT not null'
     }
