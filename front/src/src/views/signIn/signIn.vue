@@ -10,8 +10,12 @@ export default {
         name: '',
         email: '',
         password: '',
-        confirmPassword: ''
-      }
+        confirmPassword: '',
+        dni: ''
+      },
+      dni_regex: /^(\d{8})([A-Z])$/,
+      cif_regex: /^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/,
+      nie_regex: /^[XYZ]\d{7,8}[A-Z]$/
     }
   },
   methods: {
@@ -36,6 +40,8 @@ export default {
         <input type='password' id='confirmPassword' placeholder='confirm password' v-model="form.confirmPassword">
         <span v-if="this.form.confirmPassword === '' " class="errorValidationText">Confirmacion de contraseña requerida</span>
         <span class="errorValidationText" v-if="this.form.confirmPassword !== this.form.password || this.form.confirmPassword === ''">contraseña no es igual y confirma contraseña no es lo mismo <br><br></span>
+        <input type="text" placeholder="DNI:36647900E" v-model="form.dni">
+        <span v-if="nie_regex.test(this.form.dni) || this.dni_regex.test(this.form.dni) || this.cif_regex.test(this.form.dni) == true">Error al validar el DNi,NIE,CIF</span>
         <button type="button" id="sendRegister" @click="sendRegister">Register</button>
       </div>
     </div>
