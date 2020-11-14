@@ -8,6 +8,7 @@ export default {
       sucess: false,
       form: {
         name: '',
+        lastNames: '',
         email: '',
         password: '',
         confirmPassword: '',
@@ -43,6 +44,8 @@ export default {
       <div style='display:flex; flex-direction:column;'>
         <input type='text' id='name' placeholder='name' v-model="form.name">
         <span v-if="this.form.name ===''" class="errorValidationText">* <br> Nombre de usuario requerido <br><br></span>
+        <input type='text' id='name' placeholder='name' v-model="form.lastNames">
+        <span v-if="this.form.lastNames ===''" class="errorValidationText">* <br> apellidos requerido <br><br></span>
         <input type='email' id='email' placeholder='email' v-model="form.email">
         <span  v-if="this.form.email === ''" class="errorValidationText">Email requerido</span>
         <span v-if="!(/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g.test(this.form.email))" class="errorValidationText"> * <br>formato de email invalido<br><br></span>
