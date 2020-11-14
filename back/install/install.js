@@ -36,11 +36,8 @@ getConnector().then(async doc=>{
             console.log('error install')
             return
             
-        })
-        
-    })
-
-    
+        })        
+    })   
 }).catch(err=>{
     console.log(err)
     console.error(new Error(err.data.stack).stack);

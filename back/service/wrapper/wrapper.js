@@ -1,7 +1,7 @@
 const wrapperModel = require('../../model/wrapper/wrapper.js')
 const roles = require('../../service/roles/roles.js');
 const container = require('../../model/container/container.js');
-const userWrapperRolesService = require('../../service/roles/roles.js');
+const playerWrapperRolesService = require('../player/playerWrapperRoles.js');
 const wrapperContainer = require('../../service/wrapper/wrapperContainer.js');
 let {join, dirname} = require('path');
 const {v4} = require('uuid')
@@ -17,9 +17,9 @@ module.exports = class wrapperService{
             let doc = await getConnector()
             let con = doc.data
         
-            let dataUserWrapperRoles = await new userWrapperRolesService().findByRefId(con, id);
-            let dataWrapper = await this.findById(con, dataUserWrapperRoles.id_wrapper);
-            let dataRole = await new roles().findRoles(con, dataUserWrapperRoles.id_role)
+            let dataPlayerWrapperRoles = await new playerWrapperRolesService().findByRefId(con, id);
+            let dataWrapper = await this.findById(con, dataPlayerWrapperRoles.id_wrapper);
+            let dataRole = await new roles().findRoles(con, dataPlayerWrapperRoles.id_role)
             let dataWrapperContainer = await new wrapperContainer().findContainerByIdWrapper(con, dataWrapper.id);
             let dataContainer = await new container().findById(con, dataWrapperContainer.id_container);
             
