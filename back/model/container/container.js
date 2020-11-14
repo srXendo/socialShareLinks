@@ -2,7 +2,7 @@ const db = require('../db/db.js');
 class container extends db{
     #model = {
         id: 'varchar(255) not null',
-        content: 'varchar(255)'
+        content: 'TEXT'
     };
     
     constructor(){

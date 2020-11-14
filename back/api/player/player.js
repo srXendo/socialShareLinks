@@ -3,12 +3,13 @@ class apiPlayer{
     #playerController = require('../../controller/player/player.js')
     constructor(){}
     start(app){
+        console.log(new this.#playerController())
         app.post('/player/add', (req, res, next) => {
-            req.responseController = this.#playerController.addPlayer(req.rawBody)
+            req.responseController = new this.#playerController().addPlayer(req.rawBody)
             next() 
         }, apiResponse)
         app.post('/player/signup',(req, res, next)=>{
-            req.responseController = this.#playerController.authPlayer(req.rawBody)
+            req.responseController = new this.#playerController().authPlayer(req.rawBody)
             next()
         }, setSession)
         app.get('/player/getList', (req, res, next)=>{

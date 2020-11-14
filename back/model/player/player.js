@@ -3,8 +3,10 @@ class player extends db{
     #model = {
         id: 'varchar(255) not null',
         name: 'varchar(150) not null',
-        lastName: 'varchar(255) not null',
-        email: 'varchar(255) not null'
+        lastNames: 'varchar(255) not null',
+        cif: 'varchar(255) not null',
+        email: 'varchar(255) not null',
+        password: 'TEXT not null'
     }
     constructor(){
         super('players');

@@ -1,9 +1,6 @@
 const playerModel = require('../../model/player/player.js')
 const wrapperService = require('../wrapper/wrapper.js')
-const {join, dirname} = require('path')
 const { getConnector } = require('../../libs/mysql.js');
-const db = require('../../model/db/db.js');
-const wrapper = require('../../model/wrapper/wrapper.js');
 const playerWrapperRoles = require('../../model/player/playerWrapperRoles.js')
 const { v4 } = require('uuid');
 const roles = require('../../model/roles/roles.js');
@@ -58,7 +55,13 @@ class playerService{
         let con = doc.data;
         return await new playerModel().select(con, 'count(*)', `email= '${email}'`);
     }
-    
+    async existCif(cif){
+        let doc = await getConnector();
+        let con = doc.data
+        let response = await new playerModel().select(con, 'count(*)', `cif= '${cif}'`);
+        console.log(response)
+        return response[0];
+    }
     async findPlayerByEmailAndPassword(email,password){
         let doc = await getConnector();
         let con = doc.data
@@ -66,7 +69,7 @@ class playerService{
         console.log(response)
         return response[0];
     }
-    async createPlayer(email, name, password){
+    async createPlayer(email, name, password, cif, lastNames){
         return new Promise(async (resolve, reject)=>{     
             const doc = await getConnector();
             let con = doc.data;
@@ -75,7 +78,7 @@ class playerService{
             const id_role = v4();
             try{
                 con.beginTransaction(()=>{
-                    new playerModel().insert(con,id_player, name, email, `MD5(${password})`)
+                    new playerModel().insert(con,id_player, name, lastNames, cif, email, `MD5(${password})`)
                         .then(()=>{
                             return new wrapperService().createWrapper(con, id_wrapper, '/', 'folder')
                         }).then(()=>{
