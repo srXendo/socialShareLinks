@@ -1,4 +1,3 @@
-
 const { apiResponse, setSession } = require('../middleware/middleware')
 class apiPlayer{
     #playerController = require('../../controller/player/player.js')

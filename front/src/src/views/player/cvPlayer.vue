@@ -1,5 +1,10 @@
 <script>
 export default {
+  name: 'cvPlayer',
+  data: function () {
+    return {
+    }
+  }
 }
 </script>
 

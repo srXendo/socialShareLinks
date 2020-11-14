@@ -1,7 +1,7 @@
 const wrapperModel = require('../../model/wrapper/wrapper.js')
 const roles = require('../../service/roles/roles.js');
 const container = require('../../model/container/container.js');
-const userWrapperRolesService = require('../../service/user/userWrapperRoles.js');
+const userWrapperRolesService = require('../../service/roles/roles.js');
 const wrapperContainer = require('../../service/wrapper/wrapperContainer.js');
 let {join, dirname} = require('path');
 const {v4} = require('uuid')

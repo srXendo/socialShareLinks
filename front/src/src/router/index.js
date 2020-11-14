@@ -6,6 +6,8 @@ import signIn from '../views/signIn/signIn.vue'
 import dashboard from '../views/dashboard/dashboard.vue'
 import e404 from '../views/errorsHandler/errorsHandler.vue'
 import playerProfile from '../views/player/playerProfile.vue'
+import cvPlayer from '../views/player/cvPlayer.vue'
+import clubProfile from '../views/clubProfile/clubProfile.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -33,6 +35,16 @@ const routes = [
     path: '/playerProfile/:id',
     name: 'playerProfile',
     component: playerProfile
+  },
+  {
+    path: '/cvPlayer/',
+    name: 'cvPlayer',
+    component: cvPlayer
+  },
+  {
+    path: '/clubProfile/',
+    name: 'clubProfile',
+    component: clubProfile
   }
 ]
 
