@@ -5,6 +5,8 @@ class playerController{
     #CIF_REGEX = /^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/;
     #NIE_REGEX = /^[XYZ]\d{7,8}[A-Z]$/;
     #playerService = require("../../service/player/player.js");
+    constructor () {
+    }
     async addPlayer(formSignIn){
         let form = JSON.parse(formSignIn);
         let err = [];

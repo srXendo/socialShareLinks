@@ -1,6 +1,4 @@
 <script>
-import playerService from '../../services/player.service.js'
-
 export default {
   name: 'signIn',
   data: () => {
@@ -32,7 +30,7 @@ export default {
   },
   methods: {
     sendRegister: function () {
-      playerService.addPlayer(this.form)
+      this.$store.dispatch('addPlayer', this.form)
     }
   }
 }
@@ -59,6 +57,7 @@ export default {
         <button type="button" id="sendRegister" @click="sendRegister">Register</button>
       </div>
     </div>
+    <div class="preloader"></div>
   </div>
 
 </template>
@@ -66,4 +65,23 @@ export default {
   .errorValidationText{
     color:red;
   }
+  .preloader {
+  width: 70px;
+  height: 70px;
+  border: 10px solid #eee;
+  border-top: 10px solid #666;
+  border-radius: 50%;
+  animation-name: girar;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  }
+  @keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 </style>

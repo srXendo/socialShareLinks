@@ -1,21 +1,31 @@
-import userService from './../../services/player.service'
+import playerService from './../../services/player.service'
 async function responseLogin (state, responseApi) {
   const response = await responseApi
   console.log('start login: ', state, response)
 }
 async function login (context, form) {
   console.log('commiting change')
-  context.commit('responseLogin', userService.loginRequest(form))
+  context.commit('responseLogin', playerService.loginRequest(form))
+}
+async function addPlayer (context, form) {
+  context.commit('responseAddPlayer', playerService.addPlayer(form))
+}
+async function responseAddPlayer (state, responseApi) {
+  const response = await responseApi
+  console.log('responseAddPlayer: ', state, response)
 }
 export default {
   state: {
     login: false,
-    userName: undefined
+    playerName: undefined,
+    id: null
   },
   mutations: {
-    responseLogin: responseLogin
+    responseLogin: responseLogin,
+    responseAddPlayer: responseAddPlayer
   },
   actions: {
-    login: login
+    login: login,
+    addPlayer: addPlayer
   }
 }
