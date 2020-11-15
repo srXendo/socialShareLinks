@@ -1,18 +1,21 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import user from './mutations/user'
+import player from './mutations/player.js'
 Vue.use(Vuex)
-console.log(user.state)
+console.log(player.state)
 
 export default new Vuex.Store({
   state: {
-    ...user.state
+    ...player.state
   },
   mutations: {
-    ...user.mutations
+    ...player.mutations
   },
   actions: {
-    ...user.actions
+    ...player.actions
+  },
+  getters: {
+    ...player.getters
   },
   modules: {
   }
