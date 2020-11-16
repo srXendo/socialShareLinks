@@ -29,19 +29,8 @@ export default {
       }
     }
   },
-  computed: {
-    login () {
-      return this.$store.getters.login
-    }
-  },
-  watch: {
-    login (newValue, oldValue) {
-      //if new value is true go to dashboard
-    }
-  },
   methods: {
     sendRegister: function () {
-
       this.$store.dispatch('addPlayer', this.form)
       this.loading = this.$store.getters.loading
     }

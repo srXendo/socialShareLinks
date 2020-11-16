@@ -11,6 +11,16 @@ export default {
       }
     }
   },
+  computed: {
+    login () {
+      return this.$store.getters.login
+    }
+  },
+  watch: {
+    login (newValue, oldValue) {
+      //if new value is true go to dashboard
+    }
+  },
   methods: {
     sendLogin () {
       this.$store.dispatch('login', playerService.loginRequest(this.form))
