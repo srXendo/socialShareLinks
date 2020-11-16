@@ -1,4 +1,5 @@
 <script>
+import playerService from '../../services/player.service'
 export default {
   name: 'signIn',
   data: () => {
@@ -32,8 +33,7 @@ export default {
   methods: {
     sendRegister: function () {
       console.log(this.$store.getters.loading)
-      this.$store.dispatch('addPlayer', this.form)
-      this.loading = this.$store.getters.loading
+      this.$store.dispatch('addPlayer', playerService.addPlayer(this.form))
       console.log(this.$store.getters.loading)
     }
   }
@@ -42,7 +42,7 @@ export default {
 <template>
   <div>
     <h1>sign in</h1>
-    <div id="register" v-if="!this.loading">
+    <div id="register" v-if="!this.$store.getters.loading">
       <div style='display:flex; flex-direction:column;'>
         <input type='text' id='name' placeholder='name' v-model="form.name">
         <span v-if="this.form.name ===''" class="errorValidationText">* <br> Nombre de usuario requerido <br><br></span>
@@ -61,7 +61,7 @@ export default {
         <button type="button" id="sendRegister" @click="sendRegister">Register</button>
       </div>
     </div>
-    <div class="preloader" v-if="this.loading"></div>
+    <div class="preloader" v-if="this.$store.getters.loading"></div>
   </div>
 
 </template>

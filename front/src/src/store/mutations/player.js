@@ -9,17 +9,26 @@ async function responseLogin (state, responseApi) {
   })
 }
 async function login (context, form) {
-  console.log('commiting change')
   context.commit('responseLogin', playerService.loginRequest(form))
 }
-async function addPlayer (context, form) {
+async function addPlayer (context, responseApiPromise) {
   context.commit('loading', true)
-  context.commit('responseAddPlayer', playerService.addPlayer(form))
+  responseApiPromise.then(response => {
+    context.commit('loading', false)
+  }).catch(err => {
+    context.commit('loading', false)
+    console.error(err)
+  })
 }
-async function responseAddPlayer (state, responseApi) {
+function responseAddPlayer (state, responseApi, commit) {
+  console.log('--------', this, state.loading)
   responseApi.then(() => {
-    console.log(state)
-    state.loading = false
+    commit('loading', false)
+    console.log('--------', state.loading)
+  }).catch(err => {
+    commit('loading', false)
+    console.log('--------', state.loading)
+    console.log(err)
   })
 }
 async function loading (state, status) {

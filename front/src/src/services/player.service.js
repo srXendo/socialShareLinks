@@ -22,8 +22,6 @@ export default {
       headers: {
         'Content-Type': 'application/json'
       }
-    }).catch(err => {
-      return err
     })
   },
   getRegexsDni: function getREgexsDni () {
