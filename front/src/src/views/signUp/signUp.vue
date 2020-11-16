@@ -1,5 +1,5 @@
 <script>
-
+import playerService from '../../services/player.service'
 export default {
 
   name: 'signUp',
@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     sendLogin () {
-      this.$store.dispatch('login', this.form)
+      this.$store.dispatch('login', playerService.loginRequest(this.form))
     }
   }
 }
@@ -22,7 +22,7 @@ export default {
 <template>
   <div>
     <h1>sign up</h1>
-    <div style='display:flex; flex-direction:column;'>
+    <div v-if="!this.$store.getters.loading" style='display:flex; flex-direction:column;'>
       <input type='email' id='email' placeholder='email' v-model="form.email">
       <span  v-if="this.form.email === ''" class="errorValidationText">Email requerido</span>
       <span v-if="!(/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g.test(this.form.email))" class="errorValidationText"> * <br>formato de email invalido<br><br></span>
@@ -30,5 +30,6 @@ export default {
       <span v-if="this.form.password === '' " class="errorValidationText">rellene el campo password</span>
       <button type="button" id="sendLogin" @click="sendLogin">login</button>
     </div>
+    <div v-if="this.$store.getters.loading">...loading</div>
   </div>
 </template>

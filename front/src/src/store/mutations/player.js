@@ -1,4 +1,3 @@
-import playerService from '../../services/player.service'
 async function responseLogin (state, responseApi) {
   responseApi.then(response => {
     state.loading = false
@@ -8,8 +7,14 @@ async function responseLogin (state, responseApi) {
     state.loading = false
   })
 }
-async function login (context, form) {
-  context.commit('responseLogin', playerService.loginRequest(form))
+async function login (context, playerLoginPromise) {
+  context.commit('loading', true)
+  playerLoginPromise.then(response => {
+    context.commit('loading', false)
+  }).catch(err => {
+    context.commit('loading', false)
+    console.error(err)
+  })
 }
 async function addPlayer (context, responseApiPromise) {
   context.commit('loading', true)
@@ -20,16 +25,8 @@ async function addPlayer (context, responseApiPromise) {
     console.error(err)
   })
 }
-function responseAddPlayer (state, responseApi, commit) {
-  console.log('--------', this, state.loading)
-  responseApi.then(() => {
-    commit('loading', false)
-    console.log('--------', state.loading)
-  }).catch(err => {
-    commit('loading', false)
-    console.log('--------', state.loading)
-    console.log(err)
-  })
+function responseAddPlayer (state, responseApi) {
+
 }
 async function loading (state, status) {
   state.loading = status
