@@ -1,5 +1,5 @@
-async function responseLogin (state, response) {
-  if (response === 200) {
+function responseLogin (state, response) {
+  if (response.status === 200) {
     state.login = true
   } else {
     state.login = false

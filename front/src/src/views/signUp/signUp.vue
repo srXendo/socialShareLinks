@@ -18,11 +18,8 @@ export default {
     }
   },
   watch: {
-    login: function (newValue, oldValue) {
-      console.log('ASTA AQUI')
-      if (newValue) {
-        return 'hola'
-      }
+    login (newValue, oldValue) {
+      console.log('watching login: ', newValue)
     }
   },
   methods: {
