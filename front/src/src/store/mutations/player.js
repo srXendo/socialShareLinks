@@ -1,15 +1,17 @@
-async function responseLogin (state, responseApi) {
-  responseApi.then(response => {
-    state.loading = false
-    console.log('start login: ', state, response)
-  }).catch(err => {
-    console.error(new Error(err))
-    state.loading = false
-  })
+async function responseLogin (state, response) {
+  if (response == 200){
+    state.login = true
+  }
+  else {
+    state.login = false
+  }
+
+  console.log('start login: ', state, response)
 }
 async function login (context, playerLoginPromise) {
   context.commit('loading', true)
   playerLoginPromise.then(response => {
+    context.commit('responseLogin', response)
     context.commit('loading', false)
   }).catch(err => {
     context.commit('loading', false)
