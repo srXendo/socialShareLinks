@@ -22,6 +22,5 @@ export default {
         <input type="text">
         <h1>Sube tu foto de curriculum deportivo</h1>
         <button>Subir foto</button>
-        
     </div>
 </template>

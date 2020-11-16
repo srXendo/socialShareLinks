@@ -1,4 +1,5 @@
 <script>
+import environment from '../../environment/environment.js'
 import playerService from '../../services/player.service'
 export default {
 
@@ -20,6 +21,9 @@ export default {
   watch: {
     login (newValue, oldValue) {
       console.log('watching login: ', newValue)
+      if (newValue) {
+        window.location.href = `${environment.front.prot}://${environment.front.domain}:${environment.front.port}/#/dashboard`
+      }
     }
   },
   methods: {
