@@ -1,8 +1,7 @@
 async function responseLogin (state, response) {
-  if (response == 200){
+  if (response === 200) {
     state.login = true
-  }
-  else {
+  } else {
     state.login = false
   }
 
@@ -51,6 +50,7 @@ export default {
   },
   getters: {
     login: (state, getters) => {
+      console.log('getters')
       return state.login
     }
   }

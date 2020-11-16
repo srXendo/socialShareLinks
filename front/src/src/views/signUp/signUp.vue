@@ -12,13 +12,17 @@ export default {
     }
   },
   computed: {
-    login () {
+    login: function () {
+      console.log('llega')
       return this.$store.getters.login
     }
   },
   watch: {
-    login (newValue, oldValue) {
-      //if new value is true go to dashboard
+    login: function (newValue, oldValue) {
+      console.log('ASTA AQUI')
+      if (newValue) {
+        return 'hola'
+      }
     }
   },
   methods: {
