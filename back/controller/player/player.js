@@ -91,8 +91,11 @@ class playerController{
                 data: err,
                 code:  500
             })   
-        return this.#playerService.getDataPser(form.email,form.password).then(doc=>{
-            return { data: doc, code: 200, sucess: true };
+        return this.#playerService.getDataPlayer(form.email, form.password).then(doc=>{
+            if(doc)
+                return { data: doc, code: 200, sucess: true };
+            else
+                return {data: 'not find email or password', code: 404, sucess: false }    
         }).catch(err=>{
             return { ...err, code: 500, sucess: false }
         })

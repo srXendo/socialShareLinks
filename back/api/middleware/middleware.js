@@ -24,7 +24,6 @@ module.exports.bodyParser = async(req,res,next)=>{
 module.exports.apiResponse = (req,res,next) => {
     req.responseController
         .then(doc =>{   
-            console.log(doc)
             res.status(doc.code).send(doc.data)})
         .catch(err => {
             console.log(err)
@@ -34,12 +33,17 @@ module.exports.apiResponse = (req,res,next) => {
         });
 }
 module.exports.setSession = (req, res, next) => {
-    try{
-        console.log()
-    }catch(err){
-        console.error(err.stack)
-    }
 
-    res.cookie(`${process.env.back_cookie_name}`,crypto.encoding("123465","asdfghf") , { maxAge: process.env.back_cookie_maxAge, httpOnly: true, origin: process.env.back_domain});
-    res.status(200).send('{"ok":"ok"}');
+    req.responseController.then(response => {
+        console.log('response api setSession', response)
+        if(response.sucess){
+            res.cookie(`${process.env.back_cookie_name}`,crypto.encoding(JSON.stringify(response.data)) , { maxAge: process.env.back_cookie_maxAge, httpOnly: true, origin: process.env.back_domain});
+            res.status(200).send('{"ok":"ok"}');
+        }else{
+            res.status(response.code).send(response.data);
+        }
+    }).catch(err => {
+        console.error(new Error(err).stack);
+        res.send('{"no":"ok"}').status(500)
+    })
 }

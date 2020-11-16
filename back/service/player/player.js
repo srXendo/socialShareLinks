@@ -37,13 +37,15 @@ class playerService{
     constructo(){}
     async getDataPlayer(email, password){
         try{
-        let playerData = await this.findPlayerByEmailAndPassword(email, password);
-        
-        delete playerData.password;
-        playerData['wrapper'] = await new wrapperService().getWrapperForId(playerData.id);
-        //playerData['friends'] = await new friendsService().getFriendsForId(playerData.id);
 
-        return playerData
+            let playerData = await this.findPlayerByEmailAndPassword(email, password);
+            if(playerData){
+                delete playerData.password;
+                playerData['wrapper'] = await new wrapperService().getWrapperForId(playerData.id);
+                return playerData
+            }else{
+                return false
+            }
 
         }catch(err){
             console.error(new Error(err.stack));
