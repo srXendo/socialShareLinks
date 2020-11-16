@@ -18,7 +18,7 @@ export default {
   },
   watch: {
     login (newValue, oldValue) {
-      //if new value is true go to dashboard
+      console.log('watching login: ', newValue)
     }
   },
   methods: {
