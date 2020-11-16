@@ -50,8 +50,8 @@ export default {
     addPlayer: addPlayer
   },
   getters: {
-    loading: (state, getters) => {
-      return state.loading
+    login: (state, getters) => {
+      return state.login
     }
   }
 }
