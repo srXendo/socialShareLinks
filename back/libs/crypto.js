@@ -15,8 +15,7 @@ class temporal{
     }
     encoding_private(text, masterkey){
         try {
-            if(!masterkey)
-                masterkey = this.scret_pass_ed;
+            
             // random initialization vector
             const iv = this.#crypto.randomBytes(16);
 
@@ -55,11 +54,11 @@ class temporal{
     decoding(d,m){
         return this.decoding_private(d,m)
     }
-    decoding_private(data, masterkey){
+    decoding_private(data, masterkey=this.scret_pass_ed){
         try {
-            if(!masterkey)
-                masterkey = this.secret_pass_ed;
             // base64 decoding
+            console.log(this.scret_pass_ed, masterkey)
+            masterkey = Buffer.from(masterkey)
             let bData = Buffer.from(data, 'base64');
 
             // convert data to buffers
@@ -77,6 +76,7 @@ class temporal{
             return  decipher.update(text, 'binary', 'utf8') + decipher.final('utf8');
 
         }catch(e){
+            console.error(e.stack)
             return false;
         }
 

@@ -47,3 +47,16 @@ module.exports.setSession = (req, res, next) => {
         res.send('{"no":"ok"}').status(500)
     })
 }
+module.exports.getSession = (req, res, next) => {
+    console.log('getSession')
+    const playerSession = getCookie(req);
+    console.log('___', playerSession, getCookie(req))
+    if(playerSession){
+        req.playerSession = crypto.decoding(playerSession); 
+    }
+    console.log('---', req.playerSession)
+    next()
+}
+function getCookie(req){
+    return req.headers.cookie.split(';').filter(i=>i.indexOf(`${process.env.back_cookie_name}` > -1))[0].replace(`${process.env.back_cookie_name}=`,'')
+}
