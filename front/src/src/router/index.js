@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import signUp from '../views/signUp/signUp.vue'
 import signIn from '../views/signIn/signIn.vue'
+import signInClub from '../views/signIn/signInClub.vue'
 import dashboard from '../views/dashboard/dashboard.vue'
 import e404 from '../views/errorsHandler/errorsHandler.vue'
 import playerProfile from '../views/player/playerProfile.vue'
@@ -20,6 +21,11 @@ const routes = [
     path: '/signIn',
     name: 'signIn',
     component: signIn
+  },
+  {
+    path: '/signInClub/',
+    name: 'signInClub',
+    component: signInClub
   },
   {
     path: '/dashboard',

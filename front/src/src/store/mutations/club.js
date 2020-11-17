@@ -1,15 +1,14 @@
-async function responseLogin (state, response) {
-  if (response === 200) {
+function responseLogin (state, response) {
+  if (response.status === 200) {
     state.login = true
   } else {
     state.login = false
   }
-
   console.log('start login: ', state, response)
 }
-async function login (context, playerLoginPromise) {
+async function login (context, clubLoginPromise) {
   context.commit('loading', true)
-  playerLoginPromise.then(response => {
+  clubLoginPromise.then(response => {
     context.commit('responseLogin', response)
     context.commit('loading', false)
   }).catch(err => {
@@ -17,7 +16,7 @@ async function login (context, playerLoginPromise) {
     console.error(err)
   })
 }
-async function addPlayer (context, responseApiPromise) {
+async function addClub (context, responseApiPromise) {
   context.commit('loading', true)
   responseApiPromise.then(response => {
     context.commit('loading', false)
@@ -26,8 +25,7 @@ async function addPlayer (context, responseApiPromise) {
     console.error(err)
   })
 }
-function responseAddPlayer (state, responseApi) {
-
+function responseAddClub (state, responseApi) {
 }
 async function loading (state, status) {
   state.loading = status
@@ -35,18 +33,18 @@ async function loading (state, status) {
 export default {
   state: {
     login: false,
-    playerName: undefined,
+    nameClub: undefined,
     loading: false,
     id: null
   },
   mutations: {
     responseLogin: responseLogin,
-    responseAddPlayer: responseAddPlayer,
+    responseAddClub: responseAddClub,
     loading: loading
   },
   actions: {
     login: login,
-    addPlayer: addPlayer
+    addClub: addClub
   },
   getters: {
     login: (state, getters) => {
