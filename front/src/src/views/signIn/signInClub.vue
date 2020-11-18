@@ -7,11 +7,11 @@ export default {
       sucess: false,
       loading: false,
       form: {
-        nameClub: '',
+        club: '',
         email: '',
         password: '',
         confirmPassword: '',
-        cifEmpresa: ''
+        cif: ''
       }
     }
   },
@@ -43,8 +43,8 @@ export default {
     <h1>sign in</h1>
     <div id="register" v-if="!this.$store.getters.loading">
       <div style='display:flex; flex-direction:column;'>
-        <input type='text' id='name' placeholder='nameClub' v-model="form.name">
-        <span v-if="this.form.name ===''" class="errorValidationText">* <br> Nombre de usuario requerido <br><br></span>
+        <input type='text' id='name' placeholder='nameClub' v-model="form.club">
+        <span v-if="this.form.club ===''" class="errorValidationText">* <br> Nombre de club requerido <br><br></span>
         <input type='email' id='email' placeholder='email' v-model="form.email">
         <span  v-if="this.form.email === ''" class="errorValidationText">Email requerido</span>
         <span v-if="!(/^[\w-.]+@([\w-]+.)+[\w-]{2,4}$/g.test(this.form.email))" class="errorValidationText"> * <br>formato de email invalido<br><br></span>
