@@ -1,4 +1,4 @@
-const { apiResponse, setSession } = require('../middleware/middleware')
+const { apiResponse, setSession, getSession } = require('../middleware/middleware')
 class apiPlayer{
     #playerController = require('../../controller/player/player.js')
     constructor(){}
@@ -12,7 +12,8 @@ class apiPlayer{
             req.responseController = new this.#playerController().authPlayer(req.rawBody)
             next()
         }, setSession)
-        app.get('/player/getList', (req, res, next)=>{
+        app.get('/player/getList', getSession,(req, res, next)=>{
+            console.log('dddd', req.entitySession);
             res.send(JSON.stringify([
                 {playerName: 'Alberto', photoProfile: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQYG2HvFOIpbog4D1M75FOpoK6QbUOy5rNa3Q&usqp=CAU', position: 'ala', height: 1.80, years: 30, weight: 80, nation: 'spain'},
                 {playerName: 'David', photoProfile: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQYG2HvFOIpbog4D1M75FOpoK6QbUOy5rNa3Q&usqp=CAU', position: 'ala', height: 1.80, years: 26, weight: 80, nation: 'franch'},

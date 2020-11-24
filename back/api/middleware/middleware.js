@@ -35,9 +35,9 @@ module.exports.apiResponse = (req,res,next) => {
 module.exports.setSession = (req, res, next) => {
 
     req.responseController.then(response => {
-        console.log('response api setSession', response)
+        const coo = crypto.encoding(JSON.stringify(response.data))
         if(response.sucess){
-            res.cookie(`${process.env.back_cookie_name}`,crypto.encoding(JSON.stringify(response.data)) , { maxAge: process.env.back_cookie_maxAge, httpOnly: true, origin: process.env.back_domain});
+            res.cookie(`${process.env.back_cookie_name}`,coo , { maxAge: process.env.back_cookie_maxAge, httpOnly: true, origin: process.env.back_domain});
             res.status(200).send('{"ok":"ok"}');
         }else{
             res.status(response.code).send(response.data);
@@ -46,4 +46,14 @@ module.exports.setSession = (req, res, next) => {
         console.error(new Error(err).stack);
         res.send('{"no":"ok"}').status(500)
     })
+}
+
+module.exports.getSession = (req, res, next) => {
+    const cookieValue = getCookieValue(req)
+    req.entitySession = crypto.decoding(cookieValue)
+    next()
+}
+
+function getCookieValue(req){
+    return unescape(req.headers.cookie.split(';').filter(i => i.indexOf(`${process.env.back_cookie_name}`) > -1)[0].replace(`${process.env.back_cookie_name}=`,''))
 }

@@ -1,8 +1,8 @@
 
 class temporal{
     #algoritm='aes-256-gcm';
-    secret_pass = process.env.secret_pass;
-    scret_pass_ed = process.env.secret_pass_ed;
+    #secret_pass = process.env.secret_pass;
+    #secret_pass_ed = process.env.secret_pass_ed;
     #crypto = require('crypto');
     constructor(){}
     encrypt(data, pass){
@@ -13,10 +13,8 @@ class temporal{
     encoding(t, m) {
         return this.encoding_private(t, m)
     }
-    encoding_private(text, masterkey){
+    encoding_private(text, masterkey = this.#secret_pass_ed){
         try {
-            if(!masterkey)
-                masterkey = this.scret_pass_ed;
             // random initialization vector
             const iv = this.#crypto.randomBytes(16);
 
@@ -55,13 +53,10 @@ class temporal{
     decoding(d,m){
         return this.decoding_private(d,m)
     }
-    decoding_private(data, masterkey){
+    decoding_private(data, masterkey = this.#secret_pass_ed){
         try {
-            if(!masterkey)
-                masterkey = this.secret_pass_ed;
             // base64 decoding
             let bData = Buffer.from(data, 'base64');
-
             // convert data to buffers
             let salt = bData.slice(0, 64);
             let iv = bData.slice(64, 80);
@@ -77,6 +72,7 @@ class temporal{
             return  decipher.update(text, 'binary', 'utf8') + decipher.final('utf8');
 
         }catch(e){
+            console.error(e)
             return false;
         }
 
