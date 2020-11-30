@@ -7,6 +7,7 @@ import signInClub from '../views/signIn/signInClub.vue'
 import dashboard from '../views/dashboard/dashboard.vue'
 import e404 from '../views/errorsHandler/errorsHandler.vue'
 import playerProfile from '../views/player/playerProfile.vue'
+import playerProfileEdit from '../views/player/playerProfileEdit.vue'
 import cvPlayer from '../views/player/cvPlayer.vue'
 import clubProfile from '../views/clubProfile/clubProfile.vue'
 import root from '../views/root/root.vue'
@@ -24,7 +25,7 @@ const routes = [
     component: signIn
   },
   {
-    path: '/signInClub/',
+    path: '/signInClub',
     name: 'signInClub',
     component: signInClub
   },
@@ -57,6 +58,11 @@ const routes = [
     path: '/',
     name: 'root',
     component: root
+  },
+  {
+    path: '/player/profile/edit',
+    name: 'playerProfileEdit',
+    component: playerProfileEdit
   }
 ]
 

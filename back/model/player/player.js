@@ -6,7 +6,8 @@ class player extends db{
         lastNames: 'varchar(255) not null',
         dni: 'varchar(255) not null',
         email: 'varchar(255) not null',
-        password: 'TEXT not null'
+        password: 'TEXT not null',
+        photo: 'TEXT default null'
     }
     constructor(){
         super('players');
@@ -14,4 +15,4 @@ class player extends db{
         this.setPk('id');
     }
 }
-module.exports =player
+module.exports=player

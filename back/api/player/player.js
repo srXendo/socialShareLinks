@@ -23,7 +23,13 @@ class apiPlayer{
                 {playerName: 'Arnau', photoProfile: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQYG2HvFOIpbog4D1M75FOpoK6QbUOy5rNa3Q&usqp=CAU', position: 'ala', height: 1.80, years: 26, weight: 80, nation: 'franch'}
     
             ])).status(200)
-        })  
+        })
+        app.post('/player/uploadPhotoProfile', getSession, (req, res, next) => {
+            const player = JSON.parse(req.entitySession)
+            console.log(req.rawBody)
+            
+            res.status(500).send('{"no":"ok"');
+        })
     }
 }
 module.exports = new apiPlayer();
