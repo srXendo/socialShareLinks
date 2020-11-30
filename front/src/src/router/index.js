@@ -9,6 +9,7 @@ import e404 from '../views/errorsHandler/errorsHandler.vue'
 import playerProfile from '../views/player/playerProfile.vue'
 import cvPlayer from '../views/player/cvPlayer.vue'
 import clubProfile from '../views/clubProfile/clubProfile.vue'
+import root from '../views/root/root.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -43,14 +44,19 @@ const routes = [
     component: playerProfile
   },
   {
-    path: '/cvPlayer/',
+    path: '/cvPlayer',
     name: 'cvPlayer',
     component: cvPlayer
   },
   {
-    path: '/clubProfile/',
+    path: '/clubProfile',
     name: 'clubProfile',
     component: clubProfile
+  },
+  {
+    path: '/',
+    name: 'root',
+    component: root
   }
 ]
 
