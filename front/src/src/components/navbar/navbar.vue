@@ -43,6 +43,7 @@ export default {
     </div>
 </template>
 <style>
+
 #contentNavbar {
     width: 70%;
     position: absolute;
