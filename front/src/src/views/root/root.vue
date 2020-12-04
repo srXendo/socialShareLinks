@@ -61,21 +61,29 @@ export default {
     </div>
     <div id="contador">
       <div class="contadorLeft">
-        <h2>200.000</h2>
-        <h4>Jugadores</h4>
-        <p>Buscando un club</p>
-        <h2>120+</h2>
-        <h4>Oportunidades</h4>
-        <p>Y aumentando</p>
+        <div>
+          <h2>200.000</h2>
+          <h4>Jugadores</h4>
+          <p>Buscando un club</p>
+        </div>
+        <div>
+          <h2>120+</h2>
+          <h4>Oportunidades</h4>
+          <p>Y aumentando</p>
+        </div>
       </div>
        <img src="../../views/icons/logobts.png" alt="" class="logoWeb">
       <div class="contadorRigth">
-        <h2>220+</h2>
-        <h4>Clubs</h4>
-        <p>Buscando jugadores</p>
-        <h2>2</h2>
-        <h4>Pises</h4>
-        <p>y mas pronto</p>
+        <div>
+          <h2>220+</h2>
+          <h4>Clubs</h4>
+          <p>Buscando jugadores</p>
+        </div>
+        <div>
+          <h2>2</h2>
+          <h4>Pises</h4>
+          <p>y mas pronto</p>
+        </div>
       </div>
     </div>
 </div>
@@ -148,6 +156,7 @@ export default {
 }
 
 #contador {
+  display: flex;
   flex-direction: row;
   align-items: baseline;
 }
