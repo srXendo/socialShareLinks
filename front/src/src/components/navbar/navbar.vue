@@ -31,7 +31,7 @@ export default {
                 <button class="buttonsNavbar">
                     <router-link class="refactoryLink" to="/signUp">Login Jugador</router-link>
                 </button>
-                <img src="../../views/icons/Logobts.png" alt="" class="logoWeb">
+                <img src="../../views/icons/logobts.png" alt="" class="logoWeb">
                 <button class="buttonsNavbar">
                     <router-link class="refactoryLink" to="/signIn">Registrar Club</router-link>
                 </button>

@@ -15,12 +15,12 @@ export default {
 <template>
 <div id="wraperimg">
     <navbar></navbar>
-      <img src="../../assets/imagess.png" id="imglanding">
+      <img src="../../assets/fondo.png" id="imglanding">
     <h1 id="spaceTop">Principales ventajas de (Empresa) Para Clubs</h1>
     <div id="landingventajas">
       <div class="cardVentajas">
         <div class="wraperIcon">
-          <img src="../../assets/jugadorderugby.png" class="iconlanding">
+          <img src="../../assets/jugador.png" class="iconlanding">
         </div>
           <span class="stlyeTitle"><b>ENCUENTRA JUGADORES RELEVANTES</b></span>
         <p>Al utilizar nuestra solución "Smart Matching", podrá encontrar rápida y fácilmente los jugadores adecuados para su club.</p>
@@ -68,7 +68,7 @@ export default {
         <h4>Oportunidades</h4>
         <p>Y aumentando</p>
       </div>
-       <img src="../../views/icons/Logo-BTS.png" alt="" class="logoWeb">
+       <img src="../../views/icons/logobts.png" alt="" class="logoWeb">
       <div class="contadorRigth">
         <h2>220+</h2>
         <h4>Clubs</h4>
