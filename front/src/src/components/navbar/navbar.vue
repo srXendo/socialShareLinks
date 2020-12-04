@@ -20,7 +20,7 @@ export default {
                 <span style="padding-right: 11%;" class="marginNavbar">Idioma</span>
                 <span class="marginNavbar">654226236</span>
                 <div>
-                    <img class="IconsNavbar" src="../../views/icons/whatsapIcon.png" alt="">
+                    <img class="IconsNavbar" src="../../views/icons/whatsap.png" alt="">
                     <img class="IconsNavbar" src="../../views/icons/instagram.png" alt="">
                 </div>
             </div>
@@ -31,7 +31,7 @@ export default {
                 <button class="buttonsNavbar">
                     <router-link class="refactoryLink" to="/signUp">Login Jugador</router-link>
                 </button>
-                <img src="../../views/icons/Logo-BTS.png" alt="" class="logoWeb">
+                <img src="../../views/icons/Logobts.png" alt="" class="logoWeb">
                 <button class="buttonsNavbar">
                     <router-link class="refactoryLink" to="/signIn">Registrar Club</router-link>
                 </button>
