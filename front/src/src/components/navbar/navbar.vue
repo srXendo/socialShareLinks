@@ -17,7 +17,7 @@ export default {
                     <img class="IconsNavbar" src="../../views/icons/twiter.png" alt="">
                 </div>
                 <span class="marginNavbar">name-empresa@gmail.com</span>
-                <span class="marginNavbar">Idioma</span>
+                <span style="padding-right: 11%;" class="marginNavbar">Idioma</span>
                 <span class="marginNavbar">654226236</span>
                 <div>
                     <img class="IconsNavbar" src="../../views/icons/whatsapIcon.png" alt="">
@@ -25,17 +25,25 @@ export default {
                 </div>
             </div>
             <div class="navbarSpace">
-                <router-link to="/signIn">Registrar Jugador</router-link>
-                <router-link to="/signUp">Login Jugador</router-link>
+                <button class="buttonsNavbar">
+                    <router-link class="refactoryLink" to="/signIn">Registrar Jugador</router-link>
+                </button>
+                <button class="buttonsNavbar">
+                    <router-link class="refactoryLink" to="/signUp">Login Jugador</router-link>
+                </button>
                 <img src="../../views/icons/Logo-BTS.png" alt="" class="logoWeb">
-                <router-link to="/signIn">Registrar Club</router-link>
-                <router-link to="/signUp">Login Club</router-link>
+                <button class="buttonsNavbar">
+                    <router-link class="refactoryLink" to="/signIn">Registrar Club</router-link>
+                </button>
+                <button class="buttonsNavbar">
+                    <router-link class="refactoryLink" to="/signUp">Login Club</router-link>
+                </button>
             </div>
             <div class="navbar">
                 <span class="textHover">Foro</span> |
                 <span class="textHover">Streaming y videos populares de la comunidad</span> |
                 <span class="textHover">Noticias Rugby</span> |
-                <span class="textHover">Nustros Clubs</span> |
+                <span class="textHover">Nuestros Clubs</span> |
                 <span class="textHover">Nuestros Jugadores</span> |
                 <span class="textHover">Enfoca tu carrera como entrenador</span>
             </div>
@@ -43,17 +51,13 @@ export default {
     </div>
 </template>
 <style>
-
 #contentNavbar {
-    width: 70%;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    width: 100%;
     margin: auto;
     display: flex;
     flex-direction: column;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
 }
 .logoWeb{
     height: 13vh;
@@ -75,15 +79,19 @@ export default {
     align-items: center;
     margin-top: 1.5%;
     align-items: center;
+    color: black;
 }
 .navbar{
     cursor: pointer;
-    background-color: #E8F4F8;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top: 1.5%;
     align-items: center;
+    height: 4vh;
+    border-top-left-radius: 1% 33%;
+    border-top-right-radius:  1% 33%;
+    background-color: #E4FF3D;
 }
 .textHover{
     color: black;
@@ -101,5 +109,26 @@ export default {
 .marginNavbar:hover{
     color: blueviolet;
 }
-
+.buttonsNavbar {
+    width: 15%;
+    height: 4vh;
+    border: none;
+    background-color: #E4FF3D;
+    border-top-left-radius: 4% 21%;
+    border-top-right-radius: 4% 21%;
+    border-bottom-left-radius: 4% 21%;
+    border-bottom-right-radius: 4% 21%;
+    margin: auto;
+    cursor: pointer;
+}
+.buttonsNavbar:hover{
+    color: blueviolet;
+}
+.refactoryLink {
+    text-decoration: none;
+    color: black;
+}
+.refactoryLink:hover{
+    color: blueviolet;
+}
 </style>
