@@ -64,7 +64,7 @@ export default {
         <div>
           <h2>200.000</h2>
           <h4>Jugadores</h4>
-          <p>Buscando un club</p>
+          <p style="padding-bottom: 75%;">Buscando un club</p>
         </div>
         <div>
           <h2>120+</h2>
@@ -72,12 +72,14 @@ export default {
           <p>Y aumentando</p>
         </div>
       </div>
-       <img src="../../views/icons/logobts.png" alt="" class="logoWeb">
+      <div id="logoContador">
+        <img src="../../views/icons/logobts.png" alt="" class="logoWeb">
+      </div>
       <div class="contadorRigth">
         <div>
           <h2>220+</h2>
           <h4>Clubs</h4>
-          <p>Buscando jugadores</p>
+          <p style="padding-bottom: 75%;">Buscando jugadores</p>
         </div>
         <div>
           <h2>2</h2>
@@ -85,6 +87,39 @@ export default {
           <p>y mas pronto</p>
         </div>
       </div>
+    </div>
+     <div id="titleNews">
+        <h4>Noticias ultima hora</h4>
+        <h5>Ver todas</h5>
+      </div>
+    <div id="news">
+      <div class="textAlignNews">
+        <img src="../../assets/leonas.jpeg" class="wrapernewsImg" alt="">
+        <h6>Liga DH: Alcobendas se afianza en el liderato y el VRAC se lleva el...</h6>
+        <p>30 septiembre 2020 | 62 Lecturas</p>
+        <p>La tercera jornada de la Liga de División de Honor arrancó el sábado con dos partidazos, en los que el Lexus Alcobendas...</p>
+      </div>
+      <div class="textAlignNews">
+        <img src="../../assets/getxo.jpg" class="wrapernewsImg" alt="">
+        <h6>Joma presenta las revolucionarias equipaciones de Leones7s y Leonas7s</h6>
+        <p>30 septiembre 2020 | 56 Lecturas</p>
+        <p>Siguiendo con la reciente campaña #PonteEnNuestraPiel, Joma y la Federación Española de Rugby (FER) presentan las camisetas de sus selecciones masculina y...</p>
+      </div>
+      <div class="textAlignNews">
+        <img src="../../assets/salvador.jpg" class="wrapernewsImg" alt="">
+        <h6>Campaña #YoSeréLeona: 90 clubes ya tienen una internacional como madrina</h6>
+        <p>30 septiembre 2020 | 72 Lecturas</p>
+        <p>¡Esto no para! Poco más de una semana después de poner en marcha la campaña #YoSeréLeona, con la que la Federación Española...</p>
+      </div>
+    </div>
+    <h2 id="spaceColaboradores">Colaboradores</h2>
+    <div id="carouselColaboradores">
+        <img class="colaboradoresImg" src="../../views/icons/iberdrola.png" alt="">
+        <img class="colaboradoresImg" src="../../views/icons/fercatalana.png" alt="">
+        <img class="colaboradoresImg" src="../../views/icons/canterbury.png" alt="">
+        <img class="colaboradoresImg" src="../../views/icons/fervalenciana.png" alt="">
+        <img class="colaboradoresImg" src="../../views/icons/fermadrid.png" alt="">
+        <img class="colaboradoresImg" src="../../views/icons/ferrugby.png" alt="">
     </div>
 </div>
 </template>
@@ -115,7 +150,7 @@ export default {
     margin-top: 2%;
     cursor: pointer;
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .iconlanding {
@@ -159,12 +194,16 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: baseline;
+  justify-content: space-between;
+  padding-right: 12%;
+  padding-left: 12%;
 }
 
 .contadorLeft {
   width: 20%;
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .contadorRigth {
@@ -176,6 +215,51 @@ export default {
 .stlyeTitle {
   font-size: 11px;
   font-weight: bold;
+}
+
+#logoContador {
+  align-self: center;
+}
+
+#news {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.wrapernewsImg {
+  border-radius: 7%;
+}
+
+#titleNews {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-right: 6%;
+  margin-top: 6%;
+}
+
+.textAlignNews {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 18em
+}
+
+#carouselColaboradores {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.colaboradoresImg {
+    width: 15%;
+    height: 50%;
+}
+
+#spaceColaboradores {
+  margin-top: 10%;
+  margin-bottom: 6%;
 }
 
 </style>

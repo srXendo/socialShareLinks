@@ -56,10 +56,10 @@ export default {
     margin: auto;
     display: flex;
     flex-direction: column;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 13px;
 }
-.logoWeb{
+.logoWeb {
     height: 13vh;
     width: 15vw;
 
@@ -91,7 +91,7 @@ export default {
     height: 4vh;
     border-top-left-radius: 1% 33%;
     border-top-right-radius:  1% 33%;
-    background-color: #E4FF3D;
+    background-color: #16a596;
 }
 .textHover{
     color: black;
@@ -113,7 +113,7 @@ export default {
     width: 15%;
     height: 4vh;
     border: none;
-    background-color: #E4FF3D;
+    background-color: #16a596;
     border-top-left-radius: 4% 21%;
     border-top-right-radius: 4% 21%;
     border-bottom-left-radius: 4% 21%;
