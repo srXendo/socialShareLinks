@@ -16,7 +16,7 @@ export default {
 </script>
 <template>
   <div id="card">
-    <h4>{{title}}</h4>
+    <h5>{{title}}</h5>
     <input :type="type" :placeholder="placeholder">
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
   #card{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin:0.5%;
+    align-items:stretch;
+    height: 100%;
   }
 </style>

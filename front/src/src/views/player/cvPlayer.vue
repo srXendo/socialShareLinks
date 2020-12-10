@@ -7,6 +7,26 @@ export default {
   },
   data: function () {
     return {
+      cards_info: [
+        {
+          id: 0,
+          type: 'date',
+          placeholder: 'Ejemplo: 03/06/1992',
+          title: 'Escribe tu fecha de nacimiento'
+        },
+        {
+          id: 1,
+          type: 'input',
+          placeholder: 'Alberto',
+          title: 'Escribe tu Nombre'
+        },
+        {
+          id: 2,
+          type: 'number',
+          placeholder: '1.8',
+          title: 'Cual es tu altura?'
+        }
+      ]
     }
   }
 }
@@ -14,16 +34,12 @@ export default {
 
 <template>
   <div>
-    <cards class="contentCards">
-    </cards>
-    <cards class="contentCards">
+    <cards class="contentCards" :arrInfo="cards_info">
     </cards>
   </div>
 </template>
 <style>
   .contentCards{
-    flex-direction: row;
-    justify-content: space-between;
     background-color: white;
     width: 55%;
     height: 10rem;

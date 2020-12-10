@@ -10,19 +10,16 @@ export default {
     }
   },
   props: {
-    title: String,
-    placeholder: String // Define the data type
+    arrInfo: Array
   }
 
 }
 
 </script>
 <template>
-  <div>
-    <div id="cards">
-        <card type="text" title="Nombre" placeholder="Escribe tu nombre completo"></card>
-        <card type="date" placeholder="Ejemplo: 03/06/1992" title="Escribe tu fecha de nacimiento"></card>
-        <card type="number" placeholder="Ejemplo: 1.78" title="Cual es tu altura?"></card>
+  <div id="cards">
+    <div v-for="index in arrInfo" v-bind:key="index">
+      <card :type="index.type" :title="index.title" :placeholder="index.placeholder"></card>
     </div>
   </div>
 </template>
@@ -30,7 +27,6 @@ export default {
   #cards{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    margin:0.5%;
+    justify-content: space-around;
   }
 </style>
