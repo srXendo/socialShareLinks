@@ -1,9 +1,9 @@
 <script>
-import card from '../../components/card/card.vue'
+import cards from '../../components/cards/cards.vue'
 export default {
   name: 'cvPlayer',
   components: {
-    card
+    cards
   },
   data: function () {
     return {
@@ -13,19 +13,27 @@ export default {
 </script>
 
 <template>
-  <div id="contentCards">
-    <card type="text" title="Nombre" placeholder="Escribe tu nombre completo"> </card>
-    <card type="date" placeholder="Ejemplo: 03/06/1992" title="Escribe tu fecha de nacimiento"> </card>
-    <card type="number" placeholder="Ejemplo: 1.78" title="Cual es tu altura?"> </card>
-    <card type="text" placeholder="Ejemplo: Ala" title="En que club juegas?"> </card>
-    <card type="file" title="Foto de perfil"></card>
-    <button>Subir foto</button>
+  <div>
+    <cards class="contentCards">
+    </cards>
+    <cards class="contentCards">
+    </cards>
   </div>
 </template>
 <style>
-  #contentCards{
-    display: flex;
+  .contentCards{
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+    background-color: white;
+    width: 55%;
+    height: 10rem;
+    border: none;
+    border-top-left-radius: 4% 21%;
+    border-top-right-radius: 4% 21%;
+    border-bottom-left-radius: 4% 21%;
+    border-bottom-right-radius: 4% 21%;
+    box-shadow: 0px 0px 50px #ddbea9;
+    padding-right: 4%;
+
   }
 </style>
