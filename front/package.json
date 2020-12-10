@@ -18,5 +18,8 @@
   "homepage": "https://github.com/srXendo/socialShareLinks#readme",
   "devDependencies": {
     "@vue/cli": "^4.5.8"
+  },
+  "dependencies": {
+    "fetch": "^1.1.0"
   }
 }
