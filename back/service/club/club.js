@@ -1,7 +1,6 @@
 const clubModel = require('../../model/club/club.js')
-const wrapperService = require('../wrapper/wrapper.js')
+
 const { getConnector } = require('../../libs/mysql.js');
-const clubWrapperRoles = require('../../model/club/clubWrapperRoles.js')
 const { v4 } = require('uuid');
 const roles = require('../../model/roles/roles.js');
 class clubService{
@@ -19,20 +18,7 @@ class clubService{
     }
     #private={
         id: '',
-        friends: undefined,
-        wrapper: {
-            id: '',
-            name: '/',
-            role: {
-                id: '',
-                name: ''
-            },
-            type: 'folder',
-            container: {
-                id: '',
-                content: []
-            }
-        }
+        friends: undefined
     }
     constructo(){}
     async getDataClub(email, password){
@@ -41,7 +27,6 @@ class clubService{
             let clubData = await this.findClubByEmailAndPassword(email, password);
             if(clubData){
                 delete clubData.password;
-                clubData['wrapper'] = await new wrapperService().getWrapperForId(clubData.id);
                 return clubData
             }else{
                 return false
@@ -76,17 +61,17 @@ class clubService{
             const doc = await getConnector();
             let con = doc.data;
             const id_club = v4();
-            const id_wrapper = v4();
+
             const id_role = v4();
             try{
                 con.beginTransaction(()=>{
                     new clubModel().insert(con,id_club, name, lastNames, cif, email, `MD5(${password})`)
                         .then(()=>{
-                            return new wrapperService().createWrapper(con, id_wrapper, '/', 'folder')
+                           
                         }).then(()=>{
                             return new roles().insert(con, id_role, 'rw')
                         }).then(()=>{
-                            return new clubWrapperRoles().insert(con, id_club, id_wrapper, id_role)
+                           
                         }).then(()=>{     
                             con.commit((err)=>{
                                 if(err) throw new Error(err);

@@ -10,7 +10,7 @@ class playerController{
     async addPlayer(formSignIn){
         let form = JSON.parse(formSignIn);
         let err = [];
-
+        /** start validate inputs */
         if(form.name === '' || this.#regExSqli.test(form.name)){
             err.push(new Error('name not valid'))
         }
@@ -26,6 +26,8 @@ class playerController{
         if(form.dni === '' || this.#regExSqli.test(form.dni) || (!this.#DNI_REGEX.test(form.dni) && !this.#CIF_REGEX.test(form.dni) && !this.#NIE_REGEX.test(form.dni))){
             err.push(new Error('dni not valid'))
         }
+        /** end validate inputs */
+        /** start exist dni email */
         const isUniquedni = await this.existdni(form.dni)
         if(isUniquedni.sucess && isUniquedni.data !== 0)
             err.push(new Error('dni already use'))
@@ -40,7 +42,8 @@ class playerController{
                 sucess: false,
                 data: err,
                 code:  500
-            })   
+            }) 
+        /** end exist dni email */      
         return this.#playerService.createPlayer(form.email, form.name, form.password, form.dni, form.lastNames).then(doc=>{
             return { ...doc, code: 200, sucess: true };
         }).catch(err=>{

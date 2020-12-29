@@ -1,4 +1,4 @@
-module.exports=class roles{
+module.exports = class roles {
     #model = require('../../model/roles/roles.js');
     constructor(){}
     async findRoles(con, id_role){

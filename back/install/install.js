@@ -9,9 +9,9 @@ getConnector().then(async doc=>{
         let modelsLate = [];
         let arrPromises = [];
         for(let key in models){
-            console.log(models[key])
+            console.log('read model: ',models[key])
             let model = new models[key]();
-            console.log('condition', model.getFk().length === 0)
+            console.log('condition: ', model.getFk().length !== 0)
             if(model.getFk().length !== 0)
                 modelsLate.push(model)
             else

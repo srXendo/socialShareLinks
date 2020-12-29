@@ -1,13 +1,12 @@
 const db = require('../db/db.js');
 function getModel(model){
     const models = require('../models.js')
-    console.log(new models[model]().getTName())
     return new models[model]();
 }
-class playerWrapperRoles extends db{
+class playerAnswersRoles extends db{
     #model={
         id_player: 'varchar(255) not null',
-        id_wrapper: 'varchar(255) not null',
+        id_answers: 'varchar(255) not null',
         id_role: 'varchar(255) not null'
     };
     #fk = [
@@ -17,9 +16,9 @@ class playerWrapperRoles extends db{
             idReference: getModel('player').getPk()
         },
         {   
-            columnKey: 'id_wrapper',
-            tableReference: getModel('wrapper').getTName(),
-            idReference: getModel('wrapper').getPk()
+            columnKey: 'id_answers',
+            tableReference: getModel('answers').getTName(),
+            idReference: getModel('answers').getPk()
         },
         {   
             columnKey: 'id_role',
@@ -28,9 +27,9 @@ class playerWrapperRoles extends db{
         }
     ]
     constructor(){
-        super('playerswrappersRoles')
+        super('playersAnswersRoles')
         this.setColumns(this.#model)
         this.setFk(this.#fk)
     }
 }
-module.exports = playerWrapperRoles;
+module.exports = playerAnswersRoles;

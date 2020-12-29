@@ -1,21 +1,12 @@
 const playerModel = require('../../model/player/player.js')
-const wrapperService = require('../wrapper/wrapper.js')
 const { getConnector } = require('../../libs/mysql.js');
-const playerWrapperRoles = require('../../model/player/playerWrapperRoles.js')
+const playerAnswersRoles = require('./playerAnswersRoles.js')
 const { v4 } = require('uuid');
 const roles = require('../../model/roles/roles.js');
 class playerService{
     #public={
         name: '',
         friends: undefined,
-        wrapper:{
-            name: '/',
-            role: 'rw',
-            type: 'folder',
-            container: {
-                content: []
-            }
-        }
     }
     #private={
         id: '',
@@ -41,7 +32,6 @@ class playerService{
             let playerData = await this.findPlayerByEmailAndPassword(email, password);
             if(playerData){
                 delete playerData.password;
-                playerData['wrapper'] = await new wrapperService().getWrapperForId(playerData.id);
                 return playerData
             }else{
                 return false
@@ -76,30 +66,30 @@ class playerService{
             const doc = await getConnector();
             let con = doc.data;
             const id_player = v4();
-            const id_wrapper = v4();
+            const id_answers = v4();
             const id_role = v4();
             try{
                 con.beginTransaction(()=>{
-                    new playerModel().insert(con,id_player, name, lastNames, cif, email, `MD5(${password})`)
-                        .then(()=>{
-                            return new wrapperService().createWrapper(con, id_wrapper, '/', 'folder')
-                        }).then(()=>{
-                            return new roles().insert(con, id_role, 'rw')
-                        }).then(()=>{
-                            return new playerWrapperRoles().insert(con, id_player, id_wrapper, id_role)
-                        }).then(()=>{     
-                            con.commit((err)=>{
-                                if(err) throw new Error(err);
-                                resolve( {sucess: true, data: id_player})
-                            })
-                        }).catch((err)=>{
-                            console.error(err);
-                            con.rollback(()=>{
-                                console.log('rollback!!!');
-                                console.error(err)
-                                reject({sucess: false, data: new Error(err)})
-                            });    
+                    new playerModel().insert(con, id_player, name, lastNames, cif, email, `MD5(${password})`)
+                    .then(()=>{
+                        return new roles().insert(con, id_role, 'rw')
+                    }).then(()=>{
+                        return new answersServices().createAnswers(con, id_answers, 'rugby')
+                    }).then(()=>{
+                        return new playerAnswerRoles().insert(con, id_player, id_answers, id_role)
+                    }).then(()=>{     
+                        con.commit((err)=>{
+                            if(err) throw new Error(err);
+                            resolve( {sucess: true, data: id_player})
                         })
+                    }).catch((err)=>{
+                        console.error(err);
+                        con.rollback(()=>{
+                            console.log('rollback!!!');
+                            console.error(err)
+                            reject({sucess: false, data: new Error(err)})
+                        });    
+                    })
                 })
             }catch(err){
                 con.rollback(()=>{
